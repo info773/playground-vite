@@ -1,24 +1,22 @@
+import { useState } from "react";
+import type { Monster } from "../types";
+
 import Header from "./Header";
 import Form from "./Form";
 import Tracker from "./Tracker";
-import type { Monster } from "../types";
-import { useState } from "react";
 
 export default function App() {
   const [monsterList, setMonsterList] = useState<Monster[]>([]);
-  const sortedMonsterList: Monster[] = monsterList.sort(
-    (a, b) => b.score - a.score
-  );
 
-  function handleAddMonsters(newMonster: Monster) {
-    setMonsterList((monsters) => [...monsters, newMonster]);
+  function handleAddMonster(monster: Monster) {
+    setMonsterList((monsters) => [...monsters, monster]);
   }
 
   return (
     <div>
       <Header />
-      <Form onAddMonsters={handleAddMonsters} />
-      <Tracker monsterList={sortedMonsterList} />
+      <Form onAddMonster={handleAddMonster} />
+      <Tracker monsterList={monsterList} />
     </div>
   );
 }

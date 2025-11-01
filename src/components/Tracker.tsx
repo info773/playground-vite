@@ -1,22 +1,19 @@
+import type { Monster as MonsterType } from "../types";
 import Monster from "./Monster";
-import type { Monster as MonsterData } from "../types";
 
-export default function Tracker({
-  monsterList,
-}: {
-  monsterList: MonsterData[];
-}) {
+type TrackerProps = {
+  monsterList: MonsterType[];
+};
+
+export default function Tracker({ monsterList }: TrackerProps) {
   return (
-    <div className="flex-col bg-violet-200 p-4 h-screen">
-      {monsterList.map((monster: MonsterData) => (
-        <Monster
-          name={monster.name}
-          score={monster.score}
-          hitpoints={monster.hitpoints}
-          id={monster.id}
-          key={monster.id}
-        />
-      ))}
+    <div className="bg-amber-200 p-4 min-h-screen">
+      <p className="mb-2 font-semibold text-lg">Tracker</p>
+      <div className="space-y-2">
+        {monsterList.map((monster) => (
+          <Monster key={monster.id} {...monster} />
+        ))}
+      </div>
     </div>
   );
 }

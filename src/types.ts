@@ -1,6 +1,6 @@
 export type Monster = {
   name: string;
   score: number;
-  hitpoints: number;
+  hp: number;
   id: number;
 };
